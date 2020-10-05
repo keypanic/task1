@@ -1,7 +1,8 @@
-var argv = require('minimist')(process.argv.slice(2));
-var caesar = require('./caesar');
-var io = require('./io');
-var validation = require('./validation');
+const argv = require('minimist')(process.argv.slice(2));
+const caesar = require('./caesar');
+const io = require('./io');
+const validation = require('./validation');
+const pathing = require('./pathing');
 
 const bigO = {
   action: undefined, // required
@@ -20,10 +21,10 @@ function main() {
   validation.validateInput(bigO.shift, "shift"); 
   validation.validateInput(bigO.input, "input", false);
   validation.validateInput(bigO.output, "output", false);
-
-  // validation.validateFilePath(bigO.input, 'input');
-  // validation.validateFilePath(bigO.output, 'output');
   
+  bigO.input = pathing.resolve(bigO.input);
+  bigO.output = pathing.resolve(bigO.output);
+
   io.transformText(bigO, caesar);
 }
 

@@ -27,7 +27,6 @@ module.exports  = function Caesar(action, shift,  str) {
 
 function encode(str, shift) {
   let new_str = String(str).trim();
-  console.log('shift: ' + shift)
   let output  = Array.from(new_str).map(function(item) 
     {
       code = item.charCodeAt(0);

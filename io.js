@@ -43,7 +43,6 @@ function transformText(bigO, cipherCB) {
   else {
     console.log('cipher text from console: ')
     inputFromConsole(bigO, cipherCB);
-
   }
 }
 
