@@ -35,6 +35,18 @@ function inputFromConsole(bigO, cipherCB) {
   });
 }
 
+function transformText(bigO, cipherCB) {
+  if(bigO.input && isFileExist(bigO.input, 'input')) { 
+    console.log('ciphered text from file')
+    inputFromFile(bigO, cipherCB);
+  }
+  else {
+    console.log('cipher text from console: ')
+    inputFromConsole(bigO, cipherCB);
+
+  }
+}
+
 
 function isFileExist(file_path, argName) {
   isExists = false;
