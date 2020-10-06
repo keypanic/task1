@@ -9,7 +9,7 @@ function inputFromFile(bigO, cipherCB) {
   rl.on('line', (input) => {
     let result = cipherCB(bigO.action, bigO.shift, input);
     if(writeStream)
-      writeStream.write(result);
+      writeStream.write(result+"\r\n");
     else
       console.log(result);
   });
@@ -23,7 +23,7 @@ function inputFromConsole(bigO, cipherCB) {
   rl.on('line', (input) => {
     let result = cipherCB(bigO.action, bigO.shift, input);
     if(writeStream)
-      writeStream.write(result);
+      writeStream.write(result+"\r\n");
     else
       console.log(result)
   });
