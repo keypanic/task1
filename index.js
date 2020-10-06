@@ -1,14 +1,14 @@
 const argv = require('minimist')(process.argv.slice(2));
-const caesar = require('./caesar');
-const io = require('./io');
-const validation = require('./validation');
-const pathing = require('./pathing');
+const caesar = require('./src/caesar');
+const io = require('./src/io');
+const validation = require('./src/validation');
+const pathing = require('./src/pathing');
 
 const bigO = {
   action: undefined, // required
   shift: undefined, // required
-  input: undefined, //file | console
-  output: undefined // no file error required
+  input: undefined,  
+  output: undefined 
 };
 
 function main() {
@@ -18,9 +18,11 @@ function main() {
   bigO.output = argv.output ? argv.output : argv.o; 
 
   validation.validateInput(bigO.action, "action"); 
-  validation.validateInput(bigO.shift, "shift"); 
   validation.validateInput(bigO.input, "input", false);
   validation.validateInput(bigO.output, "output", false);
+
+  validation.validateAction(bigO.action, 'action');
+  validation.validateShift(bigO.shift, 'shift');
   
   bigO.input = pathing.resolve(bigO.input);
   bigO.output = pathing.resolve(bigO.output);

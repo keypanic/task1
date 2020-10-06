@@ -1,14 +1,17 @@
-Файлы с javascript находятся в директории src. </br>
-
-Перед тестированием надо выполнить команду: <br/>
-npm install <br/>
-
---action: encode или decode <br/>
---shift: число <br/>
---input: Путь к файлу на чтение. Если не указан(или файл не существует), то ввод будет из консоли. Необязательный параметр. <br/>
---output: Путь к файлу на запись. Если не указан(или файл не существует), то запись будет отображена в консоль. Необязательный параметр. <br/>
-
-Пример:<br/>
-    node index.js --action encode --shift 5<br/>
-    node index.js -a decode -s 1 -o C:\outputFile.txt<br/>
-    node index.js -a encode -s 5 -i ..\inputFile.txt -o ..\outputFile.txt <br/>
+##### Перед тестированием выполнить команду: 
+```sh 
+npm install
+```
+##### Параметры:
+* -a/--action: encode или decode  
+* -s/--shift: число  
+* -i/--input: Путь к файлу на чтение. Если не указан параметр, ввод будет из командной строки. Необязательный параметр. 
+* -o/--output: Путь к файлу на запись. Если не указан параметр, вывод будет в консоль. Необязательный параметр.  
+ 
+##### Примеры:
+```sh
+node index.js --action encode --shift 5
+node index.js -a encode -s 1 -i .\inputFile.txt
+node index.js -a decode -s 5 -i .\inputFile.txt -o .\outputFile.txt
+node index.js -a encode -s 3 -o .\outputFile.txt
+```

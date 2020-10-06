@@ -2,7 +2,7 @@ const path = require('path');
 
 function resolve(filePath) {
     if(filePath === true || filePath === undefined)
-        return false;
+        return filePath;
     return path.resolve(filePath.replace(/["']/g, ""));
 } 
 

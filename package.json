@@ -2,7 +2,7 @@
   "name": "task1",
   "version": "1.0.0",
   "description": "Caesar cipher",
-  "main": "main.js",
+  "main": "index.js",
   "dependencies": {
     "commander": "^6.1.0",
     "minimist": "^1.2.5"

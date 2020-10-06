@@ -2,10 +2,7 @@ const fs = require('fs');
 const readline = require('readline');
  
 function inputFromFile(bigO, cipherCB) {
-  let writeStream = null;
-  if(isFileExist(bigO.output, 'output ')) {
-    writeStream = fs.createWriteStream(bigO.output, {flags: 'a+'});
-  }
+  const writeStream = outputText(bigO);
   const rl = readline.createInterface({
     input: fs.createReadStream(bigO.input)
   });
@@ -19,10 +16,7 @@ function inputFromFile(bigO, cipherCB) {
 }
 
 function inputFromConsole(bigO, cipherCB) {
-  let writeStream = null;
-  if(isFileExist(bigO.output, 'output ')) {
-    writeStream = fs.createWriteStream(bigO.output, {flags: 'a+'});
-  }  
+  const writeStream = outputText(bigO);
   const rl = readline.createInterface({
     input: process.stdin 
   });
@@ -35,13 +29,19 @@ function inputFromConsole(bigO, cipherCB) {
   });
 }
 
+function outputText(bigO) {
+  let writeStream = null;
+  if(bigO.output && isFileExist(bigO.output, 'output')) { 
+    writeStream = fs.createWriteStream(bigO.output, {flags: 'a+'});
+  }
+  return writeStream;
+}
+
 function transformText(bigO, cipherCB) {
   if(bigO.input && isFileExist(bigO.input, 'input')) { 
-    console.log('ciphered text from file')
     inputFromFile(bigO, cipherCB);
   }
   else {
-    console.log('cipher text from console: ')
     inputFromConsole(bigO, cipherCB);
   }
 }
@@ -53,10 +53,10 @@ function isFileExist(file_path, argName) {
     if (fs.existsSync(file_path)) {
       isExists = true; 
     }
-    // else {
-    //   console.error(`${argName} file not exist`);
-    //   process.exit(1);
-    // }
+    else {
+      console.error(`${argName} file not exist`);
+      process.exit(1);
+    }
   } catch (err) {
     console.error(err)
     process.exit(1);

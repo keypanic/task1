@@ -42,20 +42,19 @@ function encode(str, shift) {
     }).join('');
   return  output;
 }
-// 96 = `
-// z 122
+
+
 function decode(str, shift) {
-  console.log("decode");
   let new_str = String(str).trim();
   let output  = Array.from(new_str).map(function(item) 
     {
       code = item.charCodeAt(0);
       if(item.charCodeAt(0) >= lower_char && item.charCodeAt(0) <= (lower_char + 25)) {
-        code = (item.charCodeAt(0) - lower_char + parseInt(26 - shift)) % 26;
+        code = (item.charCodeAt(0) - lower_char + 26 - parseInt(shift)) % 26;
         code += lower_char; 
       }
       else if(item.charCodeAt(0) >= upper_char && item.charCodeAt(0) <= (upper_char + 25)) {
-        code = (item.charCodeAt(0) - upper_char + parseInt(26 - shift)) % 26;
+        code = (item.charCodeAt(0) - upper_char + 26 - parseInt(shift)) % 26;
         code += upper_char;
       }
       return String.fromCharCode(code);
